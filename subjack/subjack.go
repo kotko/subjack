@@ -240,7 +240,7 @@ func Identify(subdomain string, forceSSL bool, timeout int) (service string) {
 	fingerprints := map[string]string{
 		"ERROR: The request could not be satisfied":                                                  "CLOUDFRONT",
 		"Fastly error: unknown domain":                                                               "FASTLY",
-		"<p><strong>There isn't a Github Pages site here.</strong></p>":                                     "GITHUB",
+		"<h1>404</h1>":                                     "GITHUB",
 		"herokucdn.com/error-pages/no-such-app.html":                                                 "HEROKU",
 		"The gods are wise, but do not know of the site which you seek.":                             "PANTHEON",
 		"Whatever you were looking for doesn't currently exist at this address.":                     "TUMBLR",

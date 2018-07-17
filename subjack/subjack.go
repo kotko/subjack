@@ -207,7 +207,7 @@ func Identify(subdomain string, forceSSL bool, timeout int) (service string) {
 	body := get(subdomain, forceSSL, timeout)
 
 	cname := resolve(subdomain)
-
+	fmt.Printf(cname)
 	if len(cname) <= 3 {
 		cname = ""
 	}

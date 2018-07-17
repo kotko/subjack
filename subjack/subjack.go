@@ -207,7 +207,7 @@ func Identify(subdomain string, forceSSL bool, timeout int) (service string) {
 	body := get(subdomain, forceSSL, timeout)
 
 	cname := resolve(subdomain)
-	fmt.Printf(cname)
+
 	if len(cname) <= 3 {
 		cname = ""
 	}
@@ -240,7 +240,7 @@ func Identify(subdomain string, forceSSL bool, timeout int) (service string) {
 	fingerprints := map[string]string{
 		"ERROR: The request could not be satisfied":                                                  "CLOUDFRONT",
 		"Fastly error: unknown domain":                                                               "FASTLY",
-		"<h1>404</h1>":                                     "GITHUB",
+		"<a href=\"https://help.github.com/pages/\">read the full documentation":                     "GITHUB",
 		"herokucdn.com/error-pages/no-such-app.html":                                                 "HEROKU",
 		"The gods are wise, but do not know of the site which you seek.":                             "PANTHEON",
 		"Whatever you were looking for doesn't currently exist at this address.":                     "TUMBLR",
@@ -282,7 +282,6 @@ func Identify(subdomain string, forceSSL bool, timeout int) (service string) {
 		"Looks like you've traveled too far into cyberspace.":                                     "VEND",
 		"is not a registered InCloud YouTrack.":                                                   "JETBRAINS",
 	}
-
 	for f, _ := range fingerprints {
 		if bytes.Contains(body, []byte(f)) {
 			service = fingerprints[f]

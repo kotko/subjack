@@ -53,3 +53,14 @@
 [Not Vulnerable] git.kotko.me
 [GITHUB] git.kotko.me
 [GITHUB] git.kotko.me
+[GITHUB] asdsad.github.io
+[HEROKU] collab-psrd-int-dynoquan.herokuapp.com
+[GITHUB] asdsad.github.io
+[HEROKU] collab-psrd-int-dynoquan.herokuapp.com
+[GITHUB] asdsad.github.io
+[HEROKU] collab-psrd-int-dynoquan.herokuapp.com
+[FASTLY] kotko.mes.global.prod.fastly.net
+[GITHUB] asdsad.github.io
+[HEROKU] collab-psrd-int-dynoquan.herokuapp.com
+[GITHUB] asdsad.github.io
+[HEROKU] collab-psrd-int-dynoquan.herokuapp.com

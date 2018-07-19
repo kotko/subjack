@@ -93,6 +93,7 @@ func VerifyCNAME(subdomain string) (match bool) {
 	match = false
 
 	cnames := []string{
+		".wpengine.com",
 		".cloudfront.net",
 		"amazonaws",
 		"heroku",
@@ -177,7 +178,7 @@ func detect(url, output string, ssl, verbose bool, timeout int) {
 
 	if service != "" {
 		result := fmt.Sprintf("[%s] %s\n", service, url)
-		c := fmt.Sprintf("\u001b[32;1m%s\u001b[0m", service)
+		c := fmt.Sprintf("LIKE \u001b[32;1m%s\u001b[0m", service)
 		out := strings.Replace(result, service, c, -1)
 		fmt.Printf(out)
 
@@ -238,18 +239,19 @@ func Identify(subdomain string, forceSSL bool, timeout int) (service string) {
 	}
 
 	fingerprints := map[string]string{
+		"The site you were looking for couldn't be found.":                                                        "WPENGINE",
 		"ERROR: The request could not be satisfied":                                                  "CLOUDFRONT",
-		"Fastly error: unknown domain:":                                                               "FASTLY",
+		"Fastly error: unknown domain:":                                                              "FASTLY",
 		"<a href=\"https://help.github.com/pages/\">read the full documentation":                     "GITHUB",
 		"herokucdn.com/error-pages/no-such-app.html":                                                 "HEROKU",
 		"The gods are wise, but do not know of the site which you seek.":                             "PANTHEON",
-		"Whatever you were looking for doesn't currently exist at this address.":                     "TUMBLR",
-		"Do you want to register":                                                                    "WORDPRESS",
+		"Unless you were looking for this error page, in which case":                                 "TUMBLR",
+		// "<h1>301 Moved Permanently</h1>":                                                                    "WORDPRESS",
 		"Sorry, We Couldn't Find That Page":                                                          "DESK",
-		"Help Center Closed":                                                                         "ZENDESK",
+		"<body>You are being":                                                                        "ZENDESK",
 		"Oops - We didn't find your site.":                                                           "TEAMWORK",
 		"We could not find what you're looking for.":                                                 "HELPJUICE",
-		"No settings were found for this company:":                                                   "HELPSCOUT",
+		"<p>No settings were found for this company: {0}</p>":                                        "HELPSCOUT",
 		"The specified bucket does not exist":                                                        "S3 BUCKET",
 		"The thing you were looking for is no longer here, or never was":                             "GHOST",
 		"<title>404 &mdash; File not found</title>":                                                  "CARGO",

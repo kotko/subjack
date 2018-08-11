@@ -177,7 +177,7 @@ func detect(url, output string, ssl, verbose bool, timeout int) {
 
 	if service != "" {
 		result := fmt.Sprintf("[%s] %s\n", service, url)
-		c := fmt.Sprintf("\u001b[32;1m%s\u001b[0m", service)
+		c := fmt.Sprintf("HACK \u001b[32;1m%s\u001b[0m", service)
 		out := strings.Replace(result, service, c, -1)
 		fmt.Printf(out)
 
@@ -239,6 +239,8 @@ func Identify(subdomain string, forceSSL bool, timeout int) (service string) {
 
 	fingerprints := map[string]string{
 		"ERROR: The request could not be satisfied":                                                  "CLOUDFRONT",
+		"Portal Not Specified":                                                  "HUBSPOT",
+		"The requested URL ":                                                  "AkamaiGHost",
 		"Fastly error: unknown domain:":                                                               "FASTLY",
 		"<a href=\"https://help.github.com/pages/\">read the full documentation":                     "GITHUB",
 		"herokucdn.com/error-pages/no-such-app.html":                                                 "HEROKU",

@@ -239,6 +239,7 @@ func Identify(subdomain string, forceSSL bool, timeout int) (service string) {
 
 	fingerprints := map[string]string{
 		"ERROR: The request could not be satisfied":                                                  "CLOUDFRONT",
+		"Custom domain has not been configured inside Azure":                                                  "AZURE microsoft",
 		"Portal Not Specified":                                                  "HUBSPOT",
 		"The requested URL ":                                                  "AkamaiGHost",
 		"Fastly error: unknown domain:":                                                               "FASTLY",
